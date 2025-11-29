@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Data</title>
+</head>
+<body>
+    <h1>Data</h1>
+    <ul>
+        {% for folder in folders %}
+            <li><a href="{{ url_for('get_device_data', device_serial=folder) }}">{{ folder }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
