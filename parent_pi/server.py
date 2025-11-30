@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from flask import Flask, render_template, jsonify, send_from_directory
+from flask import Flask, request, render_template, jsonify, send_from_directory
 
 app = Flask(__name__)
 
@@ -50,19 +50,19 @@ def show_connected_devices():
     return devices
 
 
-@app.route('/data/<device_serial>', methods=['GET'])
-def get_device_data(device_serial):
-    device_folder = USB_PATH / device_serial
+@app.route('/data/<device_id>', methods=['GET'])
+def get_device_data(device_id):
+    device_folder = USB_PATH / device_id
 
     if not device_folder.exists():
-        return jsonify({"status": "error", "message": f"Device {device_serial} not found"}), 404
+        return jsonify({"status": "error", "message": f"Device {device_id} not found"}), 404
     if not device_folder.is_dir():
-        return jsonify({"status": "error", "message": f"{device_serial} is not a folder"}), 400
+        return jsonify({"status": "error", "message": f"{device_id} is not a folder"}), 400
 
     try:
         # List image files
         files = [f.name for f in device_folder.iterdir() if f.is_file() and f.suffix.lower() in image_extensions]
-        return render_template("device_data.html", device_serial=device_serial, files=files)
+        return render_template("device_data.html", device_id=device_id, files=files)
 
     except PermissionError:
         return jsonify({"status": "error", "message": "Permission denied"}), 403
@@ -71,11 +71,34 @@ def get_device_data(device_serial):
     
 
 # Route to serve individual files from the device folder
-@app.route('/data/<device_serial>/<filename>')
-def serve_file(device_serial, filename):
-    device_folder = USB_PATH / device_serial
+@app.route('/data/<device_id>/<filename>')
+def serve_file(device_id, filename):
+    device_folder = USB_PATH / device_id
     return send_from_directory(directory=device_folder, path=filename)
 
+
+@app.route('/upload/<device_id>', methods=['POST'])
+def upload_file(device_id):
+    """
+    Receive files from child devices and save them in device-specific folders.
+    """
+    device_folder = USB_PATH / device_id
+    device_folder.mkdir(parents=True, exist_ok=True)  # create folder if it doesn't exist
+
+    if 'files' not in request.files:
+        return jsonify({"error": "No files part in the request"}), 400
+
+    files = request.files.getlist('files')
+    if not files:
+        return jsonify({"error": "No files uploaded"}), 400
+
+    saved_files = []
+    for f in files:
+        save_path = device_folder / f.filename
+        f.save(save_path)
+        saved_files.append(str(save_path))
+
+    return jsonify({"message": f"Saved {len(saved_files)} files", "files": saved_files}), 200
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
