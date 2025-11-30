@@ -11,6 +11,16 @@ USB_PATH = Path('/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/test_usb_d
 image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')
 
 
+def get_connected_devices():
+    devices = [
+        {"serial": "parent_pi", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
+        {"serial": "10000000abcd1234", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
+        {"serial": "20000000abcd1234", "ip": "192.168.4.2", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi2", "source": "dhcp"},
+        {"serial": "30000000abcd1234", "ip": "192.168.4.3", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi3", "source": "dhcp"},
+    ]
+    return devices
+    
+
 @app.route('/')
 def hello():
     return render_template("home.html")
@@ -35,13 +45,8 @@ def fetch_data():
 
 # function to retrieve all devices connected to the Pi's network (maybe exclude non-raspberry-pi because they don't have unique ID aka serial number)
 @app.route('/devices')
-def get_nearby_devices():
-    devices = [
-        {"serial": "parent_pi", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
-        {"serial": "10000000abcd1234", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
-        {"serial": "20000000abcd1234", "ip": "192.168.4.2", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi2", "source": "dhcp"},
-        {"serial": "30000000abcd1234", "ip": "192.168.4.3", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi3", "source": "dhcp"},
-    ]
+def show_connected_devices():
+    devices = get_connected_devices()
     return devices
 
 
