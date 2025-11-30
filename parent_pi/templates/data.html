@@ -6,8 +6,8 @@
 <body>
     <h1>Data</h1>
     <ul>
-        {% for folder in folders %}
-            <li><a href="{{ url_for('get_device_data', device_serial=folder) }}">{{ folder }}</a></li>
+        {% for device_id in device_ids %}
+            <li><a href="{{ url_for('get_device_data', device_id=device_id) }}">{{ device_id }}</a></li>
         {% endfor %}
     </ul>
 </body>

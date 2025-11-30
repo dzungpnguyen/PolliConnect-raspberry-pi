@@ -33,9 +33,9 @@ def fetch_data():
         if not USB_PATH.exists():
             return jsonify({"status": "error", "message": "USB drive not found"}), 404
         
-        folders = [f.name for f in USB_PATH.iterdir() if f.is_dir()]
+        device_ids = [folder.name for folder in USB_PATH.iterdir() if folder.is_dir()]
 
-        return render_template("data.html", folders=folders)
+        return render_template("data.html", device_ids=device_ids)
 
     except PermissionError:
         return jsonify({"status": "error", "message": "Permission denied"}), 403
