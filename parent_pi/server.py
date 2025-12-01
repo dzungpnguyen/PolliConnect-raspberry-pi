@@ -5,7 +5,7 @@ from flask import Flask, request, render_template, jsonify, send_from_directory
 app = Flask(__name__)
 
 # USB_PATH = Path('/media/sda1')
-USB_PATH = Path('/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/test_usb_drive')
+USB_PATH = Path('/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/test_usb_parent')
 
 # List of image extensions to look for
 image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')
