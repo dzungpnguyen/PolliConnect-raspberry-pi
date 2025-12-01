@@ -4,12 +4,12 @@
     <title>PolliImages by Device</title>
 </head>
 <body>
-    <h2>Data from device: {{ device_serial }}</h2>
+    <h2>Data from device: {{ device_id }}</h2>
     <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
         {% for filename in files %}
         <li style="text-align: center;">
-            <a href="{{ url_for('serve_file', device_serial=device_serial, filename=filename) }}" target="_blank">
-                <img src="{{ url_for('serve_file', device_serial=device_serial, filename=filename) }}" width="300" height="200" alt="{{ filename }}">
+            <a href="{{ url_for('serve_file', device_id=device_id, filename=filename) }}" target="_blank">
+                <img src="{{ url_for('serve_file', device_id=device_id, filename=filename) }}" width="300" height="200" alt="{{ filename }}">
                 <p>{{ filename }}</p>
             </a>
         </li>

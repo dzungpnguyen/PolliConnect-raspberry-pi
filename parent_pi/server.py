@@ -77,11 +77,9 @@ def serve_file(device_id, filename):
     return send_from_directory(directory=device_folder, path=filename)
 
 
+# Receive files from child devices and save them in device-specific folders
 @app.route('/upload/<device_id>', methods=['POST'])
 def upload_file(device_id):
-    """
-    Receive files from child devices and save them in device-specific folders.
-    """
     device_folder = USB_PATH / device_id
     device_folder.mkdir(parents=True, exist_ok=True)  # create folder if it doesn't exist
 
