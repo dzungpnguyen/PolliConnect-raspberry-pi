@@ -7,7 +7,7 @@
     <h1>Data</h1>
     <ul>
         {% for device_id in device_ids %}
-            <li><a href="{{ url_for('get_device_data', device_id=device_id) }}">{{ device_id }}</a></li>
+            <li><a href="{{ url_for('master.get_device_data', device_id=device_id) }}">{{ device_id }}</a></li>
         {% endfor %}
     </ul>
 </body>

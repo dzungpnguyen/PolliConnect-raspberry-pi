@@ -6,10 +6,10 @@
 <body>
     <h1>PolliCam hello!</h1>
     <div>
-        <a href="/devices">Nearby devices</a>
+        <a href="{{ url_for('master.show_connected_devices')}}">Nearby devices</a>
     </div>
     <div>
-        <a href="/data">Data</a>
+        <a href="{{ url_for('master.fetch_data')}}">Data</a>
     </div>
     <div>
         <i>#Stat is coming...</i>
