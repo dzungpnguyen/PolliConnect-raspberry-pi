@@ -1,5 +1,7 @@
 # Setting up headless Raspberry Pi as a Wifi Access Point (via SSH)
 
+This document is inspired by [a tutorial for non-headless Pi](https://learn.sparkfun.com/tutorials/setting-up-a-raspberry-pi-3-as-an-access-point).
+
 Before starting, make sure your Pi and your computer are connected to the same network.
 
 ## SSH to Pi
