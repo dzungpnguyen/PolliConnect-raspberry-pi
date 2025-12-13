@@ -26,8 +26,6 @@ def get_connected_devices():
     devices = [
         {"serial": "parent_pi", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
         {"serial": "10000000abcd1234", "ip": "192.168.4.1", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi1", "source": "dhcp"},
-        {"serial": "20000000abcd1234", "ip": "192.168.4.2", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi2", "source": "dhcp"},
-        {"serial": "30000000abcd1234", "ip": "192.168.4.3", "mac": "dc:a6:32:7b:19:f0", "hostname": "pi3", "source": "dhcp"},
     ]
     return devices
 
