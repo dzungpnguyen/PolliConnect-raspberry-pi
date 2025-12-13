@@ -6,6 +6,9 @@
 <body>
     <h1>PolliCam hello!</h1>
     <div>
+        <a href="{{ url_for('master.show_master_info')}}">This Master Camera</a>
+    </div>
+    <div>
         <a href="{{ url_for('master.show_connected_devices')}}">Nearby devices</a>
     </div>
     <div>
