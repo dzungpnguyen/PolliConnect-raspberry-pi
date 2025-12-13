@@ -29,8 +29,19 @@ def get_connected_devices():
     ]
     return devices
 
+"""
+Read and show the specifications of the master camera
+Input: None
+Output:
+Note: This is example data, the developped function should detect automatically camera specs. To be consistent and coherent, data shoudle be stored in master_bp.<data-name>
+"""
+@master_bp.route("/master-camera")
+def show_master_info(): 
+    master_ip = None
+    return render_template("master_camera.html", master_ip=master_ip)
 
-# function to retrieve all devices connected to the Pi's network (maybe exclude non-raspberry-pi because they don't have unique ID aka serial number)
+
+# function to retrieve all devices connected to the Pi's network (should exclude non-raspberry-pi devices because they don't have unique ID aka serial number)
 @master_bp.route('/devices')
 def show_connected_devices():
     devices = get_connected_devices()
