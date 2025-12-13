@@ -1,9 +1,10 @@
 import requests
 from pathlib import Path
 
-PARENT_PI_IP = "192.168.1.45"
+MASTER_IP = "192.168.5.1"
+
 DEVICE_ID = "dung_computer"
-UPLOAD_URL = f"http://{PARENT_PI_IP}:5000/upload/{DEVICE_ID}"
+UPLOAD_URL = f"http://{MASTER_IP}:5000/upload/{DEVICE_ID}"
 
 def send_files(list_filepaths):
     files = []
@@ -30,7 +31,7 @@ def send_files(list_filepaths):
 if __name__ == "__main__":
     # Test
     image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')
-    child_folder = Path("/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/usb_child")
+    child_folder = Path("/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/mock_data/usb_child")
     files_to_send = [f for f in child_folder.iterdir() if f.is_file() and f.suffix.lower() in image_extensions]
 
     send_files(files_to_send)
