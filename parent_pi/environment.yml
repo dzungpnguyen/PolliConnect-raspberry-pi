@@ -1,0 +1,10 @@
+name: PolliConnect-Pi
+channels:
+  - defaults
+dependencies:
+  - python=3.14
+  - flask
+  - pip
+  - pip:
+    - pi-ina219==1.4.1
+prefix: /Users/phuong-dung/anaconda3/envs/PolliConnect-Pi
