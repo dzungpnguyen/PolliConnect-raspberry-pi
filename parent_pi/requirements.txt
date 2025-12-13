@@ -1,0 +1,11 @@
+Adafruit-PureIO==1.1.11
+Adafruit_GPIO==1.0.3
+blinker @ file:///opt/miniconda3/conda-bld/blinker_1764332139731/work
+click @ file:///opt/miniconda3/conda-bld/click_1764332238985/work
+Flask @ file:///Users/ec2-user/buildout/croot/flask_1759958196653/work
+itsdangerous @ file:///Users/ec2-user/buildout/croot/itsdangerous_1759956286884/work
+Jinja2 @ file:///Users/ec2-user/buildout/croot/jinja2_1761936793528/work
+MarkupSafe @ file:///Users/ec2-user/buildout/croot/markupsafe_1759952215014/work
+mock==5.2.0
+pi-ina219==1.4.1
+Werkzeug @ file:///Users/ec2-user/buildout/croot/werkzeug_1759957447516/work
