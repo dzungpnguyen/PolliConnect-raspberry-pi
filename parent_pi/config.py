@@ -1,4 +1,7 @@
 class Config:
     DEBUG = True
-    MASTER_DATA_FOLDER = "/home/lacnguyen/PEANUT/GIT/PolliConnect-Raspberry-Pi/mock_data/usb_parent" if DEBUG else "/media/sda1/"
-    DATABASE_URI = ""
+#    MASTER_DATA_FOLDER = "/Users/phuong-dung/PolliConnect/PolliConnect-Raspberry-Pi/mock_data/usb_master" if DEBUG else "/media/sda1/"
+    DATABASE_URI = None
+    
+
+#Config.get_master_ip()
