@@ -65,7 +65,7 @@ Add the following to that file. You can freely change the `ssid` (Wifi network n
 ```
 interface=wlan0
 driver=nl80211
-ssid=MyPiAP
+ssid=MySSID
 hw_mode=g
 channel=6
 ieee80211n=1
@@ -76,7 +76,7 @@ auth_algs=1
 ignore_broadcast_ssid=0
 wpa=2
 wpa_key_mgmt=WPA-PSK
-wpa_passphrase=raspberry
+wpa_passphrase=MyPassphrase
 rsn_pairwise=CCMP
 ```
 
@@ -134,8 +134,8 @@ sudo systemctl enable dnsmasq
 This enables both services at boot. To verify:
 
 ```
-systemctl is-enable hostapd
-systemctl is-enable dnsmasq
+systemctl is-enabled hostapd
+systemctl is-enabled dnsmasq
 ```
 
 Test the AP config without rebooting:
@@ -146,6 +146,6 @@ Look for the line `wlan0: AP-ENABLED` and any fatal errors. If no error, you can
 
 `sudo reboot`
 
-This will close the SSH session since Pi and your computer are no longer under the same network. Wait for 30s-1m, you should see MyPiAP appears as a wireless network from your computer.
+This will close the SSH session since Pi and your computer are no longer under the same network. Wait for 30s-1m, you should see PolliEdgeAP appears as a wireless network from your computer.
 
 Connect to the network using the predefined password and SSH to `192.168.5.1`.
